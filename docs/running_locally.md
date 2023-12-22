@@ -102,3 +102,9 @@ The Safe Web app will be available at at http://localhost:8000/ although check t
 Add your `NEXT_PUBLIC_INFURA_TOKEN` value if its required for the chain RCP uri in the [container_env_files/ui.env](../container_env_files/ui.env) file.
 
 Additionally, the Safe Web app itself, defines which instance of the Safe CGW to use in this [container_env_files/ui.env](../container_env_files/ui.env) file. The value of `NEXT_PUBLIC_GATEWAY_URL_PRODUCTION` defines the URL where the Safe CGW can be reached. The default in this repo, points to the instance running as part of the `docker-compose.yml` file, but can be adjusted to point to our production instances, or your own hosted instance.
+
+# Setup local .env
+
+```shell
+sh scripts/setup_env.sh
+```
