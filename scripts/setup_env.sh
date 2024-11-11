@@ -1,3 +1,9 @@
+#!/bin/bash
+
+# Create the directory if it does not exist
+mkdir -p container_env_files
+
+# Check for required environment variables
 if [ -z "${CONFIG_DOMAIN}" ]
 then
   echo CONFIG_DOMAIN env is missing
@@ -28,7 +34,7 @@ then
   exit 1
 fi
 
-
+# Generate the environment files using `sed`
 sed "s/SUPERUSER_EMAIL_VALUE/$SUPERUSER_EMAIL/g; s/SUPERUSER_USERNAME_VALUE/$SUPERUSER_USERNAME/g; s/SUPERUSER_PASSWORD_VALUE/$SUPERUSER_PASSWORD/g; s|CONFIG_DOMAIN|$CONFIG_DOMAIN|g;" $1 ./container_env_files_templates/cfg.env > ./container_env_files/cfg.env
 
 sed "s/EXCHANGE_API_KEY_VALUE/$EXCHANGE_API_KEY/g" $1 ./container_env_files_templates/cgw.env > ./container_env_files/cgw.env
@@ -39,4 +45,4 @@ sed "s|CONFIG_DOMAIN|$CONFIG_DOMAIN|g;" $1 ./container_env_files_templates/txs.e
 
 sed "s|CONFIG_DOMAIN|$CONFIG_DOMAIN|g;" $1 ./container_env_files_templates/ui.env > ./container_env_files/ui.env
 
-sed "$1" ./container_env_files_templates/.env > .env
+sed "s|RPC_NODE_URL_VALUE|$RPC_NODE_URL|g;" $1 ./container_env_files_templates/.env > .env
