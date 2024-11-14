@@ -21,7 +21,7 @@ sed "s|{RPC_NODE_URL}|$RPC_NODE_URL|g;" $1 ./container_env_files_templates/.env 
 
 sed "s|{CONFIG_DOMAIN}|$CONFIG_DOMAIN|g;" $1 ./container_env_files_templates/cfg.env > ./container_env_files/cfg.env
 
-cp ./container_env_files_templates/cgw.env ./container_env_files/cgw.env
+sed "s|{CONFIG_DOMAIN}|$CONFIG_DOMAIN|g;" $1 ./container_env_files_templates/cgw.env > ./container_env_files/cgw.env
 
 cp ./container_env_files_templates/events.env ./container_env_files/events.env
 
