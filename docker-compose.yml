@@ -78,7 +78,7 @@ services:
     <<: *redishealthcheck
 
   txs-rabbitmq:
-    image: rabbitmq:alpine
+    image: rabbitmq:4.0.5-alpine
 
   txs-worker-indexer: &txs-worker
     image: gulabs/safe-transaction-service:${TXS_VERSION}
@@ -172,7 +172,7 @@ services:
       - 8080
 
   general-rabbitmq:
-    image: rabbitmq:alpine
+    image: rabbitmq:4.0.5-alpine
     healthcheck:
       test: rabbitmq-diagnostics -q ping
       interval: 15s
